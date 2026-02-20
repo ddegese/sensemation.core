@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>All</AnalysisMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NewStyleCop.Analyzers" Version="1.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+ </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('stylecop.json', '$(MSBuildThisFileDirectory)'))" Link="stylecop.json" />
+  </ItemGroup>
+</Project>

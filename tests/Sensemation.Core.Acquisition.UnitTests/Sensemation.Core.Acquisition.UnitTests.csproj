@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\acquisition\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" />
+    <ProjectReference Include="..\..\src\acquisition\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj" />
+    <ProjectReference Include="..\..\src\acquisition\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj" />
+    <ProjectReference Include="..\..\src\acquisition\sources\Sensemation.Core.Acquisition.Source.Memory\Sensemation.Core.Acquisition.Source.Memory.csproj" />
+    <ProjectReference Include="..\..\src\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
+  </ItemGroup>
+
+</Project>

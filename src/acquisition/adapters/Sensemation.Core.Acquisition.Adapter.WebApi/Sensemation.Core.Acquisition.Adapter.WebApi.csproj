@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
