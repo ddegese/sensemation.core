@@ -1,24 +1,30 @@
-// <copyright file="CachePersistenceService.cs" company="Sensemation">
+// <copyright file="CacheService.cs" company="Sensemation">
 //     Copyright (c) 2026 Sensemation. All rights reserved.
 // </copyright>
 
 using System.Text.Json;
 
-namespace Sensemation.Core.Acquisition.Demo.Console.Services.Cache;
+using Microsoft.Extensions.Logging;
+
+using Sensemation.Core.Acquisition.Configuration.Models;
+using Sensemation.Core.Contracts.Serialization;
+
+namespace Sensemation.Core.Acquisition.Runtime.Services;
 
 /// <summary>
 /// Service for persisting caches to disk.
 /// </summary>
 /// <remarks>
-/// Initializes a new instance of the <see cref="CachePersistenceService"/> class.
+/// Initializes a new instance of the <see cref="CacheService"/> class.
 /// </remarks>
 /// <param name="logger">The logger.</param>
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1812:Avoid uninstantiated internal classes", Justification = "Instantiated by DI")]
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1852:Seal internal types", Justification = "Used by dependency injection")]
-internal class CachePersistenceService(ILogger<CachePersistenceService> logger) : IDisposable
+public class CacheService(ILogger<CacheService> logger) : IDisposable
 {
 #pragma warning disable CA1848
-    private readonly ILogger<CachePersistenceService> logger = logger;
+    private readonly ILogger<CacheService> logger = logger;
+    private readonly JsonSerializerOptions serializerOptions = CreateSerializerOptions();
     private CacheConfiguration? config;
     private string? cacheDirectory;
     private bool disposed;
@@ -50,7 +56,7 @@ internal class CachePersistenceService(ILogger<CachePersistenceService> logger) 
     {
         if (this.config == null || this.cacheDirectory == null)
         {
-            throw new ArgumentException("CachePersistenceService must be initialized before use.");
+            throw new ArgumentException("CacheService must be initialized before use.");
         }
 
         if (!this.config.Enabled)
@@ -67,7 +73,7 @@ internal class CachePersistenceService(ILogger<CachePersistenceService> logger) 
             }
 
             var filePath = Path.Combine(targetDirectory, $"{identifier}.json");
-            var json = JsonSerializer.Serialize(data);
+            var json = JsonSerializer.Serialize(data, this.serializerOptions);
             File.WriteAllText(filePath, json);
         }
         catch (Exception ex)
@@ -87,7 +93,7 @@ internal class CachePersistenceService(ILogger<CachePersistenceService> logger) 
     {
         if (this.config == null || this.cacheDirectory == null)
         {
-            throw new ArgumentException("CachePersistenceService must be initialized before use.");
+            throw new ArgumentException("CacheService must be initialized before use.");
         }
 
         if (!this.config.Enabled)
@@ -101,7 +107,7 @@ internal class CachePersistenceService(ILogger<CachePersistenceService> logger) 
             if (File.Exists(filePath))
             {
                 var json = File.ReadAllText(filePath);
-                return JsonSerializer.Deserialize<T>(json);
+                return JsonSerializer.Deserialize<T>(json, this.serializerOptions);
             }
         }
         catch (Exception ex)
@@ -129,5 +135,12 @@ internal class CachePersistenceService(ILogger<CachePersistenceService> logger) 
         {
             this.disposed = true;
         }
+    }
+
+    private static JsonSerializerOptions CreateSerializerOptions()
+    {
+        var options = new JsonSerializerOptions(JsonSerializerDefaults.General);
+        options.Converters.Add(new DataPointJsonConverter());
+        return options;
     }
 }

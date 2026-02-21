@@ -4,7 +4,6 @@
 
 using Sensemation.Core.Acquisition.Configuration.Logging;
 using Sensemation.Core.Acquisition.Configuration.Validators;
-using Sensemation.Core.Acquisition.Demo.Console.Services.Cache;
 using Sensemation.Core.Acquisition.Demo.Console.Services.Configuration;
 using Sensemation.Core.Acquisition.Demo.Console.Services.Managers;
 using Sensemation.Core.Acquisition.Demo.Console.Services.Plugins;
@@ -49,7 +48,7 @@ internal static class Program
         _ = services.AddSingleton<SourceManager>();
         _ = services.AddSingleton<TriggerManager>();
         _ = services.AddSingleton<GroupManager>();
-        _ = services.AddSingleton<CachePersistenceService>();
+        _ = services.AddSingleton<CacheService>();
         _ = services.AddSingleton<ItemManager>();
 
         using var provider = services.BuildServiceProvider();
@@ -72,7 +71,7 @@ internal static class Program
         var groupManager = provider.GetRequiredService<GroupManager>();
         groupManager.CreateGroups(serviceConfig.Groups);
 
-        var cacheService = provider.GetRequiredService<CachePersistenceService>();
+        var cacheService = provider.GetRequiredService<CacheService>();
         cacheService.InitializeCacheService(serviceConfig.Cache);
 
         var itemManager = provider.GetRequiredService<ItemManager>();

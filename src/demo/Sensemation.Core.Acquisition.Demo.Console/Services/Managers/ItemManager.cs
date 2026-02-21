@@ -7,7 +7,6 @@ using System.Collections.Concurrent;
 using Sensemation.Core.Acquisition.Abstractions.Enums;
 using Sensemation.Core.Acquisition.Abstractions.Models;
 using Sensemation.Core.Acquisition.Demo.Console.Logging;
-using Sensemation.Core.Acquisition.Demo.Console.Services.Cache;
 using Sensemation.Core.Acquisition.Runtime.Models;
 using Sensemation.Core.Acquisition.Runtime.Services;
 using Sensemation.Core.Contracts;
@@ -32,7 +31,7 @@ internal class ItemManager(
     ILogger<ItemManager> logger,
     GroupManager groupManager,
     AdapterManager adapterManager,
-    CachePersistenceService cacheService,
+    CacheService cacheService,
     UpdateEventDispatcher dispatcher,
     IValueConverter valueConverter) : IDisposable
 {
@@ -65,7 +64,7 @@ internal class ItemManager(
         "Design",
         "CA2213:Disposable fields should be disposed",
         Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
-    private readonly CachePersistenceService cacheService = cacheService;
+    private readonly CacheService cacheService = cacheService;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Design",
