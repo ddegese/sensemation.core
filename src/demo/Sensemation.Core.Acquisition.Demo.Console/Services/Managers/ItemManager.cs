@@ -248,7 +248,7 @@ internal class ItemManager(
             CacheSize = itemConfig.CacheSize ?? 10,
         };
 
-        this.RegisterItemAndLoadCache(item, identifier, itemConfig.SourceAddress);
+        this.RegisterItemAndLoadCache(item);
 
         return item;
     }
@@ -257,16 +257,14 @@ internal class ItemManager(
     /// Registers an item in the internal collection and loads its cache from disk.
     /// </summary>
     /// <param name="item">The item to register.</param>
-    /// <param name="identifier">The identifier of the item.</param>
-    /// <param name="sourceAddress">The source address of the item.</param>
-    private void RegisterItemAndLoadCache(BaseItem item, string identifier, string sourceAddress)
+    private void RegisterItemAndLoadCache(ItemSource item)
     {
-        if (!this.itemsByIdentifier.ContainsKey(identifier))
+        if (!this.itemsByIdentifier.ContainsKey(item.Id))
         {
-            this.itemsByIdentifier[identifier] = item;
+            this.itemsByIdentifier[item.Id] = item;
 
             // Log item creation
-            LogMessages.ItemCreatedLogger(this.logger, identifier, sourceAddress, null);
+            LogMessages.ItemCreatedLogger(this.logger, item.Id, item.SourceAddress, null);
 
             // Load cache from disk if available
             if (this.cacheService != null)
@@ -280,7 +278,7 @@ internal class ItemManager(
         }
         else
         {
-            throw new ArgumentException(string.Format(System.Globalization.CultureInfo.InvariantCulture, "Duplicate identifier {0} found for item {1}", identifier, sourceAddress));
+            throw new ArgumentException(string.Format(System.Globalization.CultureInfo.InvariantCulture, "Duplicate identifier {0} found for item {1}", item.Id, item.SourceAddress));
         }
     }
 
