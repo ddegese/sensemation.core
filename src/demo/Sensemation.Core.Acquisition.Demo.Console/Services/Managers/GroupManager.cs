@@ -26,6 +26,10 @@ internal class GroupManager(
     /// <summary>
     /// The logger for the group manager.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; GroupManager does not create or own these dependencies.")]
     private readonly ILogger<GroupManager> logger = logger;
 
     /// <summary>
@@ -36,11 +40,19 @@ internal class GroupManager(
     /// <summary>
     /// The source manager.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; GroupManager does not create or own these dependencies.")]
     private readonly SourceManager sourceManager = sourceManager;
 
     /// <summary>
     /// The trigger manager.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; GroupManager does not create or own these dependencies.")]
     private readonly TriggerManager triggerManager = triggerManager;
 
     /// <summary>
@@ -169,9 +181,6 @@ internal class GroupManager(
                 }
 
                 this.groups.Clear();
-
-                this.sourceManager.Dispose();
-                this.triggerManager.Dispose();
             }
 
             this.disposed = true;

@@ -111,7 +111,23 @@ public sealed class UpdateEventDispatcher : IDisposable
             return;
         }
 
-        this.cancellationTokenSource.Cancel();
-        this.cancellationTokenSource.Dispose();
+        try
+        {
+            if (!this.cancellationTokenSource.IsCancellationRequested)
+            {
+                this.cancellationTokenSource.Cancel();
+            }
+        }
+        catch (ObjectDisposedException)
+        {
+        }
+
+        try
+        {
+            this.cancellationTokenSource.Dispose();
+        }
+        catch (ObjectDisposedException)
+        {
+        }
     }
 }

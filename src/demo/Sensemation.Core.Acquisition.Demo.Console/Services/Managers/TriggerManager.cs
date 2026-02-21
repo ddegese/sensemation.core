@@ -19,7 +19,16 @@ namespace Sensemation.Core.Acquisition.Demo.Console.Services.Managers;
 [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1852:Seal internal types", Justification = "Used by dependency injection")]
 internal class TriggerManager(ILogger<TriggerManager> logger, IServiceProvider serviceProvider) : IDisposable
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; TriggerManager does not create or own these dependencies.")]
     private readonly ILogger<TriggerManager> logger = logger;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; TriggerManager does not create or own these dependencies.")]
     private readonly IServiceProvider serviceProvider = serviceProvider;
     private readonly Dictionary<string, ITrigger> triggers = [];
     private readonly Dictionary<string, Type> triggerTypes = [];
@@ -127,6 +136,7 @@ internal class TriggerManager(ILogger<TriggerManager> logger, IServiceProvider s
             }
 
             this.triggers.Clear();
+            this.triggerTypes.Clear();
         }
     }
 

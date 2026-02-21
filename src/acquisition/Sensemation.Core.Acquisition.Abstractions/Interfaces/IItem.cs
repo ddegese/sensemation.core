@@ -2,6 +2,8 @@
 //     Copyright (c) 2026 Sensemation. All rights reserved.
 // </copyright>
 
+using System.Collections.ObjectModel;
+
 using Sensemation.Core.Acquisition.Abstractions.Enums;
 using Sensemation.Core.Contracts;
 
@@ -41,4 +43,11 @@ public interface IItem : IValueRead, IValueListener
     /// </summary>
     /// <param name="listener">The listener to add.</param>
     public void AddValueListener(IValueListener listener);
+
+    /// <summary>
+    /// Gets historical datapoints.
+    /// </summary>
+    /// <param name="count">The maximum number of points to return.</param>
+    /// <returns>The historical datapoints.</returns>
+    public ReadOnlyCollection<DataPoint> GetHistoryValues(int? count = null);
 }

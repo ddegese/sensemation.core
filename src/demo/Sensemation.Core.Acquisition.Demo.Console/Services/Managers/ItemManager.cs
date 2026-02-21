@@ -3,7 +3,6 @@
 // </copyright>
 
 using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 
 using Sensemation.Core.Acquisition.Abstractions.Enums;
 using Sensemation.Core.Acquisition.Abstractions.Models;
@@ -37,16 +36,48 @@ internal class ItemManager(
     UpdateEventDispatcher dispatcher,
     IValueConverter valueConverter) : IDisposable
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
     private readonly ILogger<ItemManager> logger = logger;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
     private readonly ConcurrentDictionary<string, IItem> itemsByIdentifier = new(StringComparer.OrdinalIgnoreCase);
     private readonly ConcurrentDictionary<string, string> itemToGroupMap = new(StringComparer.OrdinalIgnoreCase);
-    private readonly GroupManager groupManager = groupManager;
-    private readonly AdapterManager adapterManager = adapterManager;
-    private readonly CachePersistenceService cacheService = cacheService;
-    private readonly UpdateEventDispatcher dispatcher = dispatcher;
-    private readonly IValueConverter valueConverter = valueConverter;
 
-#pragma warning disable IDE0028
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
+    private readonly GroupManager groupManager = groupManager;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
+    private readonly AdapterManager adapterManager = adapterManager;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
+    private readonly CachePersistenceService cacheService = cacheService;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
+    private readonly UpdateEventDispatcher dispatcher = dispatcher;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Design",
+        "CA2213:Disposable fields should be disposed",
+        Justification = "Owned by the DI container; ItemManager does not create or own these dependencies.")]
+    private readonly IValueConverter valueConverter = valueConverter;
 
     /// <summary>
     /// Creates items from the provided configuration and assigns them to groups and adapters.
@@ -157,54 +188,6 @@ internal class ItemManager(
     }
 
     /// <summary>
-    /// Gets an item by its identifier.
-    /// </summary>
-    /// <param name="itemIdentifier">The item identifier.</param>
-    /// <returns>The item with the specified identifier, or null if not found.</returns>
-    public IItem? GetItemByIdentifier(string itemIdentifier) => this.itemsByIdentifier.TryGetValue(itemIdentifier, out var item) ? item : null;
-
-    /// <summary>
-    /// Gets all items.
-    /// </summary>
-    /// <returns>A collection of all items.</returns>
-    public Collection<IItem> GetItems() => new([.. this.itemsByIdentifier.Values]);
-
-    /// <summary>
-    /// Updates the value of an item.
-    /// </summary>
-    /// <param name="itemIdentifier">The item identifier.</param>
-    /// <param name="value">The new value.</param>
-    /// <returns>True if the update was successful, false otherwise.</returns>
-    public async Task<bool> UpdateItemValue(string itemIdentifier, object value)
-    {
-        var item = this.GetItemByIdentifier(itemIdentifier);
-        if (item == null)
-        {
-            return false;
-        }
-
-        try
-        {
-            if (item is BaseItem baseItem)
-            {
-                _ = await baseItem.WriteValueAsync(value).ConfigureAwait(false);
-            }
-            else
-            {
-                return false;
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            LogMessages.ItemWriteErrorLogger(this.logger, itemIdentifier, ex);
-
-            return false;
-        }
-    }
-
-    /// <summary>
     /// Disposes of the resources used by the ItemManager.
     /// </summary>
     public void Dispose()
@@ -226,10 +209,7 @@ internal class ItemManager(
             {
                 foreach (var item in this.itemsByIdentifier.Values)
                 {
-                    if (item is BaseItem baseItem)
-                    {
-                        this.cacheService.SaveCache<IEnumerable<DataPoint>>(item.Id, baseItem.GetHistoryValues(), "items");
-                    }
+                    this.cacheService.SaveCache<IEnumerable<DataPoint>>(item.Id, item.GetHistoryValues(), "items");
                 }
             }
 
@@ -247,11 +227,6 @@ internal class ItemManager(
 
             this.itemsByIdentifier.Clear();
             this.itemToGroupMap.Clear();
-
-            this.groupManager.Dispose();
-            this.adapterManager.Dispose();
-            this.cacheService?.Dispose();
-            this.dispatcher?.Dispose();
         }
     }
 
