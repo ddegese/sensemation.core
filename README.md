@@ -1,4 +1,4 @@
-# Sensemation.Core
+<img width="1000" height="250" alt="sensemation core" src="https://github.com/user-attachments/assets/785d80fe-757b-4624-970e-aec3bcd6141d" />
 
 Sensemation.Core is the open-core acquisition engine for the Sensemation platform. It delivers the reusable contracts, runtime, configuration, logging, and plugin model that power acquisition scenarios.
 
