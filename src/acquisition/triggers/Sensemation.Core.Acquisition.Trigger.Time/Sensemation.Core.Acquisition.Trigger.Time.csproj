@@ -12,7 +12,12 @@
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <PackageId>Sensemation.Core.Acquisition.Trigger.Time</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeProjectReferencesInPackage>true</IncludeProjectReferencesInPackage>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
