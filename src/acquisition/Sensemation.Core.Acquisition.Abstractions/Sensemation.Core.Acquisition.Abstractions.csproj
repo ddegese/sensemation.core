@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\building-blocks\SenseMation.Core.Contracts\SenseMation.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
     <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
   </ItemGroup>
 
