@@ -3,15 +3,18 @@
   <ItemGroup>
     <ProjectReference Include="..\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
     <ProjectReference Include="..\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj" />
+    <ProjectReference Include="..\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj" />
     <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
     <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
-    <PackageReference Include="DynamicExpresso.Core" Version="2.18.0" />
   </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <PackageId>Sensemation.Core.Acquisition.Runtime</PackageId>
+    <IncludeProjectReferencesInPackage>true</IncludeProjectReferencesInPackage>
   </PropertyGroup>
 
 </Project>
