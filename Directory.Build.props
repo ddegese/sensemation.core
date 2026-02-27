@@ -23,7 +23,7 @@
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.*" PrivateAssets="all" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(IncludeProjectReferencesInPackage)' == 'true'">
+  <PropertyGroup>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeProjectReferencesInPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
@@ -31,7 +31,10 @@
           DependsOnTargets="ResolveReferences"
           Condition="'$(IncludeProjectReferencesInPackage)' == 'true'">
     <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+      <_ProjectReferenceCopyLocal Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+      <BuildOutputInPackage Include="@(_ProjectReferenceCopyLocal)">
+        <TargetPath>%(_ProjectReferenceCopyLocal.Filename)%(_ProjectReferenceCopyLocal.Extension)</TargetPath>
+      </BuildOutputInPackage>
     </ItemGroup>
   </Target>
 </Project>
