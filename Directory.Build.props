@@ -28,12 +28,17 @@
   </PropertyGroup>
 
   <Target Name="IncludeProjectReferencesInPackage"
-          DependsOnTargets="ResolveReferences"
           Condition="'$(IncludeProjectReferencesInPackage)' == 'true'">
     <ItemGroup>
-      <_ProjectReferenceCopyLocal Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
-      <BuildOutputInPackage Include="@(_ProjectReferenceCopyLocal)">
-        <TargetPath>%(_ProjectReferenceCopyLocal.Filename)%(_ProjectReferenceCopyLocal.Extension)</TargetPath>
+      <_ProjectReferenceBuiltDll Include="@(ProjectReference->'$(OutputPath)%(Filename).dll')"
+                                 Condition="Exists('%(Identity)')" />
+      <_ProjectReferenceBuiltXml Include="@(ProjectReference->'$(OutputPath)%(Filename).xml')"
+                                 Condition="Exists('%(Identity)')" />
+      <BuildOutputInPackage Include="@(_ProjectReferenceBuiltDll)">
+        <TargetPath>%(_ProjectReferenceBuiltDll.Filename)%(_ProjectReferenceBuiltDll.Extension)</TargetPath>
+      </BuildOutputInPackage>
+      <BuildOutputInPackage Include="@(_ProjectReferenceBuiltXml)">
+        <TargetPath>%(_ProjectReferenceBuiltXml.Filename)%(_ProjectReferenceBuiltXml.Extension)</TargetPath>
       </BuildOutputInPackage>
     </ItemGroup>
   </Target>
