@@ -1,5 +1,5 @@
-// <copyright file="LogMessages.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="LogMessages.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 using Microsoft.Extensions.Logging;

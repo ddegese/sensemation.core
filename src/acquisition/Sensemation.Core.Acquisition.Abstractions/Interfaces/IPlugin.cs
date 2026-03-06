@@ -1,5 +1,5 @@
-// <copyright file="IPlugin.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="IPlugin.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 namespace Sensemation.Core.Acquisition.Abstractions.Interfaces;

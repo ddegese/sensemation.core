@@ -1,5 +1,5 @@
-// <copyright file="GlobalUsings.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="GlobalUsings.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 global using Microsoft.Extensions.Configuration;

@@ -1,5 +1,5 @@
-// <copyright file="Program.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="Program.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 using Sensemation.Core.Acquisition.Configuration.Logging;

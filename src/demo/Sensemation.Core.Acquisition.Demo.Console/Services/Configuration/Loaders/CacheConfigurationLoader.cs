@@ -1,5 +1,5 @@
-// <copyright file="CacheConfigurationLoader.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="CacheConfigurationLoader.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 namespace Sensemation.Core.Acquisition.Demo.Console.Services.Configuration.Loaders;

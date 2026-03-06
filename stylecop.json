@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
   "settings": {
     "documentationRules": {
-      "companyName": "Sensemation",
+      "companyName": "InnovoMind, LLC",
       "copyrightText": "Copyright (c) 2026 {companyName}. All rights reserved.",
       "xmlHeader": true,
       "fileNamingConvention": "stylecop"

@@ -1,5 +1,5 @@
-// <copyright file="WebApiAdapter.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="WebApiAdapter.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 using Microsoft.AspNetCore.Builder;

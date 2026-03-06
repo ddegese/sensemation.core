@@ -1,5 +1,5 @@
-// <copyright file="AdapterConfiguration.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="AdapterConfiguration.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 namespace Sensemation.Core.Acquisition.Configuration.Models;

@@ -1,5 +1,5 @@
-// <copyright file="IValueListener.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="IValueListener.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 using Sensemation.Core.Contracts;

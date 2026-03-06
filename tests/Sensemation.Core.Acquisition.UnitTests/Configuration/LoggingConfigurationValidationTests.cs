@@ -1,5 +1,5 @@
-// <copyright file="LoggingConfigurationValidationTests.cs" company="Sensemation">
-//     Copyright (c) 2026 Sensemation. All rights reserved.
+// <copyright file="LoggingConfigurationValidationTests.cs" company="InnovoMind, LLC">
+//     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
 using Sensemation.Core.Acquisition.Configuration.Models;
