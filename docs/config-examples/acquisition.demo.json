@@ -11,7 +11,8 @@
     "scanDirectories": ["./plugins"],
     "assemblies": [
       "./Sensemation.Core.Acquisition.Source.Memory.dll",
-      "./Sensemation.Core.Acquisition.Adapter.WebApi.dll"
+      "./Sensemation.Core.Acquisition.Adapter.WebApi.dll",
+      "./Sensemation.Core.Acquisition.Trigger.Time.dll"
     ]
   },
   "sources": [

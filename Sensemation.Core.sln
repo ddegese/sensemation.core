@@ -5,39 +5,39 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "building-blocks", "building-blocks", "{C13E73B6-616D-3195-CD22-1E55A7D1F969}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "platform", "platform", "{C13E73B6-616D-3195-CD22-1E55A7D1F969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Contracts", "src\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj", "{1DE46857-8F45-4BFD-B78D-341FA67A8FDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Contracts", "src\platform\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj", "{1DE46857-8F45-4BFD-B78D-341FA67A8FDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Foundation", "src\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj", "{8C6A1524-59CE-4D42-8ADA-D02EDE03607F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Foundation", "src\platform\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj", "{8C6A1524-59CE-4D42-8ADA-D02EDE03607F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "acquisition", "acquisition", "{036D2197-69C8-30E9-3563-097A04C8871D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Abstractions", "src\acquisition\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj", "{088B005A-88A5-4B6E-B824-DA1C569E5B74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Abstractions", "src\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj", "{088B005A-88A5-4B6E-B824-DA1C569E5B74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Demo.Console", "src\\demo\\Sensemation.Core.Acquisition.Demo.Console\\Sensemation.Core.Acquisition.Demo.Console.csproj", "{B9CD67EE-EDCA-40E6-B07D-21FA68B66FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Runtime", "src\acquisition\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj", "{78F5B829-7965-4438-AB34-D3F57C561209}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Runtime", "src\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj", "{78F5B829-7965-4438-AB34-D3F57C561209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Configuration", "src\acquisition\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj", "{925C9D70-D397-44EF-9F7E-2FBC71BEC33D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Configuration", "src\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj", "{925C9D70-D397-44EF-9F7E-2FBC71BEC33D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.PluginModel", "src\acquisition\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj", "{13DB50CE-0C2D-4C0E-9AAD-8E747C232930}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.PluginModel", "src\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj", "{13DB50CE-0C2D-4C0E-9AAD-8E747C232930}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{D92A319D-C217-5F7F-31F9-D0DC7C37AEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Source.Memory", "src\acquisition\sources\Sensemation.Core.Acquisition.Source.Memory\Sensemation.Core.Acquisition.Source.Memory.csproj", "{7D2F8E62-DAC8-40AA-AF30-E70A7666E17A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Source.Memory", "src\modules\Sensemation.Core.Acquisition\sources\Sensemation.Core.Acquisition.Source.Memory\Sensemation.Core.Acquisition.Source.Memory.csproj", "{7D2F8E62-DAC8-40AA-AF30-E70A7666E17A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adapters", "adapters", "{694F963E-8663-F569-3F58-8BA9201D32C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Adapter.WebApi", "src\acquisition\adapters\Sensemation.Core.Acquisition.Adapter.WebApi\Sensemation.Core.Acquisition.Adapter.WebApi.csproj", "{26B6AAA8-4064-4C77-B254-45706D621867}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Adapter.WebApi", "src\modules\Sensemation.Core.Acquisition\adapters\Sensemation.Core.Acquisition.Adapter.WebApi\Sensemation.Core.Acquisition.Adapter.WebApi.csproj", "{26B6AAA8-4064-4C77-B254-45706D621867}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "triggers", "triggers", "{D35758EB-D1F9-49A4-ACA2-E4DED03AA2D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Trigger.Time", "src\acquisition\triggers\Sensemation.Core.Acquisition.Trigger.Time\Sensemation.Core.Acquisition.Trigger.Time.csproj", "{09EA5F86-9DF4-413A-A354-D4C3724240E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.Trigger.Time", "src\modules\Sensemation.Core.Acquisition\triggers\Sensemation.Core.Acquisition.Trigger.Time\Sensemation.Core.Acquisition.Trigger.Time.csproj", "{09EA5F86-9DF4-413A-A354-D4C3724240E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.UnitTests", "tests\Sensemation.Core.Acquisition.UnitTests\Sensemation.Core.Acquisition.UnitTests.csproj", "{81F6C06F-8827-41F7-8F0A-13A0B7DADD9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensemation.Core.Acquisition.UnitTests", "src\tests\Sensemation.Core.Acquisition.UnitTests\Sensemation.Core.Acquisition.UnitTests.csproj", "{81F6C06F-8827-41F7-8F0A-13A0B7DADD9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

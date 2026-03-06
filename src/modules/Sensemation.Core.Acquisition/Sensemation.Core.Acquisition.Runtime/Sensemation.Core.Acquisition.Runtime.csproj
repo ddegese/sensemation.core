@@ -4,8 +4,8 @@
     <ProjectReference Include="..\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
     <ProjectReference Include="..\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj" />
     <ProjectReference Include="..\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj" />
-    <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
-    <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
+    <ProjectReference Include="..\..\..\platform\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\platform\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

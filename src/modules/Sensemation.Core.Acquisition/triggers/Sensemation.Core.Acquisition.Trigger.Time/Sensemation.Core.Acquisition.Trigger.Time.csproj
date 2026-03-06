@@ -1,11 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" />
-    <ProjectReference Include="..\..\..\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="..\..\..\..\platform\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\platform\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -13,7 +11,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
-    <PackageId>Sensemation.Core.Acquisition.Adapter.WebApi</PackageId>
+    <PackageId>Sensemation.Core.Acquisition.Trigger.Time</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeProjectReferencesInPackage>true</IncludeProjectReferencesInPackage>
   </PropertyGroup>

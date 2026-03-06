@@ -13,15 +13,15 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
-    <ProjectReference Include="..\..\acquisition\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
-    <ProjectReference Include="..\..\acquisition\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" />
-    <ProjectReference Include="..\..\acquisition\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj" />
-    <ProjectReference Include="..\..\acquisition\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj" />
-    <ProjectReference Include="..\..\acquisition\adapters\Sensemation.Core.Acquisition.Adapter.WebApi\Sensemation.Core.Acquisition.Adapter.WebApi.csproj" />
-    <ProjectReference Include="..\..\acquisition\sources\Sensemation.Core.Acquisition.Source.Memory\Sensemation.Core.Acquisition.Source.Memory.csproj" />
-    <ProjectReference Include="..\..\acquisition\triggers\Sensemation.Core.Acquisition.Trigger.Time\Sensemation.Core.Acquisition.Trigger.Time.csproj" />
-    <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
-    <ProjectReference Include="..\..\building-blocks\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.Configuration\Sensemation.Core.Acquisition.Configuration.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\Sensemation.Core.Acquisition.PluginModel\Sensemation.Core.Acquisition.PluginModel.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\adapters\Sensemation.Core.Acquisition.Adapter.WebApi\Sensemation.Core.Acquisition.Adapter.WebApi.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\sources\Sensemation.Core.Acquisition.Source.Memory\Sensemation.Core.Acquisition.Source.Memory.csproj" />
+    <ProjectReference Include="..\..\modules\Sensemation.Core.Acquisition\triggers\Sensemation.Core.Acquisition.Trigger.Time\Sensemation.Core.Acquisition.Trigger.Time.csproj" />
+    <ProjectReference Include="..\..\platform\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\platform\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,20 +22,22 @@ This repo includes a **console demo host** that runs entirely offline and wires 
 ## Repository layout
 ```
 src/
-  building-blocks/
+  modules/
+    Sensemation.Core.Acquisition/
+      Sensemation.Core.Acquisition.Abstractions/
+      Sensemation.Core.Acquisition.Runtime/
+      Sensemation.Core.Acquisition.Configuration/
+      Sensemation.Core.Acquisition.PluginModel/
+      sources/Sensemation.Core.Acquisition.Source.Memory/
+      adapters/Sensemation.Core.Acquisition.Adapter.WebApi/
+      triggers/Sensemation.Core.Acquisition.Trigger.Time/
+  platform/
     Sensemation.Core.Contracts/
     Sensemation.Core.Foundation/
-  acquisition/
-    Sensemation.Core.Acquisition.Abstractions/
-    Sensemation.Core.Acquisition.Runtime/
-    Sensemation.Core.Acquisition.Configuration/
-    Sensemation.Core.Acquisition.PluginModel/
-    sources/Sensemation.Core.Acquisition.Source.Memory/
-    adapters/Sensemation.Core.Acquisition.Adapter.WebApi/
-demo/
-  Sensemation.Core.Acquisition.Demo.Console/
-tests/
-  Sensemation.Core.Acquisition.UnitTests/
+  demo/
+    Sensemation.Core.Acquisition.Demo.Console/
+  tests/
+    Sensemation.Core.Acquisition.UnitTests/
 docs/
   architecture/
   config-examples/
@@ -61,7 +63,8 @@ See `docs/config-examples/acquisition.demo.json` for a minimal demo configuratio
   "scanDirectories": ["./plugins"],
   "assemblies": [
     "./Sensemation.Core.Acquisition.Source.Memory.dll",
-    "./Sensemation.Core.Acquisition.Adapter.WebApi.dll"
+    "./Sensemation.Core.Acquisition.Adapter.WebApi.dll",
+    "./Sensemation.Core.Acquisition.Trigger.Time.dll"
   ]
 }
 ```
