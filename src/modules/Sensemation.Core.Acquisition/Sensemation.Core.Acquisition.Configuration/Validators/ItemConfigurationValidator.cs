@@ -112,16 +112,29 @@ public static class ItemConfigurationValidator
         ValidateItemAdapters(item, adapters);
     }
 
-    private static void ValidateItemSourceAddress(ItemConfiguration item)
+    /// <summary>
+    /// Validates that an item has a non-empty source address.
+    /// </summary>
+    /// <param name="item">The item configuration to validate.</param>
+    public static void ValidateItemSourceAddress(ItemConfiguration item)
     {
+        ArgumentNullException.ThrowIfNull(item);
+
         if (string.IsNullOrWhiteSpace(item.SourceAddress))
         {
             throw new ArgumentException($"Item '{item.Id}' must have a SourceAddress.", nameof(item));
         }
     }
 
-    private static void ValidateItemGroup(ItemConfiguration item, Collection<GroupConfiguration>? groups)
+    /// <summary>
+    /// Validates that an item references an existing group.
+    /// </summary>
+    /// <param name="item">The item configuration to validate.</param>
+    /// <param name="groups">The available group configurations.</param>
+    public static void ValidateItemGroup(ItemConfiguration item, Collection<GroupConfiguration>? groups)
     {
+        ArgumentNullException.ThrowIfNull(item);
+
         if (string.IsNullOrWhiteSpace(item.Group))
         {
             throw new ArgumentException($"Item '{item.SourceAddress}' has a null, empty or whitespace-only group", nameof(item));
@@ -133,8 +146,14 @@ public static class ItemConfigurationValidator
         }
     }
 
-    private static void ValidateItemDatatype(ItemConfiguration item)
+    /// <summary>
+    /// Validates that an item has a supported datatype.
+    /// </summary>
+    /// <param name="item">The item configuration to validate.</param>
+    public static void ValidateItemDatatype(ItemConfiguration item)
     {
+        ArgumentNullException.ThrowIfNull(item);
+
         if (string.IsNullOrWhiteSpace(item.Datatype))
         {
             throw new ArgumentException($"Item '{item.SourceAddress}' has a null, empty or whitespace-only datatype", nameof(item));
@@ -146,19 +165,33 @@ public static class ItemConfigurationValidator
         }
     }
 
-    private static void ValidateItemCacheSize(ItemConfiguration item)
+    /// <summary>
+    /// Validates that an item's cache size is greater than zero when provided.
+    /// </summary>
+    /// <param name="item">The item configuration to validate.</param>
+    public static void ValidateItemCacheSize(ItemConfiguration item)
     {
+        ArgumentNullException.ThrowIfNull(item);
+
         if (item.CacheSize.HasValue && item.CacheSize <= 0)
         {
             throw new ArgumentException($"Item '{item.SourceAddress}' has invalid cache size: {item.CacheSize}. Cache size must be greater than 0.", nameof(item));
         }
     }
 
-    private static void ValidateItemUniqueness(ItemConfiguration item, Dictionary<string, HashSet<string>> itemSourceAddressesByGroup)
+    /// <summary>
+    /// Validates that the item source address is unique within its group.
+    /// </summary>
+    /// <param name="item">The item configuration to validate.</param>
+    /// <param name="itemSourceAddressesByGroup">The address lookup by group used to detect duplicates.</param>
+    public static void ValidateItemUniqueness(ItemConfiguration item, Dictionary<string, HashSet<string>> itemSourceAddressesByGroup)
     {
+        ArgumentNullException.ThrowIfNull(item);
+        ArgumentNullException.ThrowIfNull(itemSourceAddressesByGroup);
+
         if (!itemSourceAddressesByGroup.TryGetValue(item.Group, out var value))
         {
-            value = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            value = new([], StringComparer.OrdinalIgnoreCase);
             itemSourceAddressesByGroup[item.Group] = value;
         }
 
@@ -168,8 +201,16 @@ public static class ItemConfigurationValidator
         }
     }
 
-    private static void ValidateItemIdentifier(ItemConfiguration item, HashSet<string> itemIdentifiers)
+    /// <summary>
+    /// Validates that the item identifier is unique across all items.
+    /// </summary>
+    /// <param name="item">The item configuration to validate.</param>
+    /// <param name="itemIdentifiers">The set of known item identifiers.</param>
+    public static void ValidateItemIdentifier(ItemConfiguration item, HashSet<string> itemIdentifiers)
     {
+        ArgumentNullException.ThrowIfNull(item);
+        ArgumentNullException.ThrowIfNull(itemIdentifiers);
+
         var effectiveIdentifier = string.IsNullOrWhiteSpace(item.Id) ? item.SourceAddress : item.Id;
 
         if (!itemIdentifiers.Add(effectiveIdentifier))
@@ -178,8 +219,15 @@ public static class ItemConfigurationValidator
         }
     }
 
-    private static void ValidateItemAdapters(ItemConfiguration item, Collection<AdapterConfiguration>? adapters)
+    /// <summary>
+    /// Validates that item adapter references exist in the configured adapter collection.
+    /// </summary>
+    /// <param name="item">The item configuration containing adapter references.</param>
+    /// <param name="adapters">The available adapter configurations to validate against.</param>
+    public static void ValidateItemAdapters(ItemConfiguration item, Collection<AdapterConfiguration>? adapters)
     {
+        ArgumentNullException.ThrowIfNull(item);
+
         if (adapters != null && item.Adapters.Count > 0)
         {
             foreach (var adapterName in item.Adapters)
