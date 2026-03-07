@@ -49,7 +49,7 @@ public class ItemSource : BaseItem, IItemSource
         }
         catch (Exception ex)
         {
-            LogMessages.ItemSourceWriteFailedLogger(this.Logger, this.Id, ex);
+            LogMessages.ItemSourceWriteFailed(this.Logger, this.Id, ex);
             dataPoint = new DataPoint(DateTime.UtcNow, null, Quality.Bad);
         }
 

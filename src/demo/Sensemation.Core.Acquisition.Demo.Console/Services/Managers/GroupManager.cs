@@ -80,7 +80,7 @@ internal class GroupManager(
             }
             else
             {
-                LogMessages.SourceNotFoundLogger(this.logger, groupConfig.Source, groupConfig.Id, null);
+                LogMessages.SourceNotFound(this.logger, groupConfig.Source, groupConfig.Id, null);
             }
 
             // Assign the trigger to the group
@@ -91,7 +91,7 @@ internal class GroupManager(
             }
             else
             {
-                LogMessages.TriggerNotFoundLogger(this.logger, groupConfig.Trigger, groupConfig.Id, null);
+                LogMessages.TriggerNotFound(this.logger, groupConfig.Trigger, groupConfig.Id, null);
             }
         }
     }
@@ -108,11 +108,11 @@ internal class GroupManager(
         if (this.groups.TryGetValue(groupName, out var group))
         {
             group.Source = source;
-            LogMessages.SourceAssignedToGroupLogger(this.logger, source.Id, groupName, null);
+            LogMessages.SourceAssignedToGroup(this.logger, source.Id, groupName, null);
         }
         else
         {
-            LogMessages.GroupNotFoundLogger(this.logger, groupName, null);
+            LogMessages.GroupNotFound(this.logger, groupName, null);
         }
     }
 
@@ -128,11 +128,11 @@ internal class GroupManager(
         if (this.groups.TryGetValue(groupName, out var group))
         {
             group.Trigger = trigger;
-            LogMessages.TriggerAssignedToGroupLogger(this.logger, trigger.Id, groupName, null);
+            LogMessages.TriggerAssignedToGroup(this.logger, trigger.Id, groupName, null);
         }
         else
         {
-            LogMessages.GroupNotFoundLogger(this.logger, groupName, null);
+            LogMessages.GroupNotFound(this.logger, groupName, null);
         }
     }
 
@@ -174,7 +174,7 @@ internal class GroupManager(
                     if (group is IDisposable disposableGroup)
                     {
                         // Log group destruction before disposing
-                        LogMessages.GroupDisposedLogger(this.logger, group.Id, null);
+                        LogMessages.GroupDisposed(this.logger, group.Id, null);
 
                         disposableGroup.Dispose();
                     }
@@ -199,7 +199,7 @@ internal class GroupManager(
         this.groups[name] = group;
 
         // Log group creation
-        LogMessages.GroupCreatedLogger(this.logger, name, null);
+        LogMessages.GroupCreated(this.logger, name, null);
 
         return group;
     }

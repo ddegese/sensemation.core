@@ -41,7 +41,7 @@ public class MemorySource : BaseSource
 
         var results = new Dictionary<string, DataPoint>();
 
-        LogMessages.ReadingTagsLogger(this.Logger, items.Count, null);
+        LogMessages.ReadingTags(this.Logger, items.Count, null);
 
         foreach (var item in items)
         {
@@ -54,7 +54,7 @@ public class MemorySource : BaseSource
             results[item.Id] = new DataPoint(DateTime.UtcNow, value, Quality.Good);
         }
 
-        LogMessages.ReadCompleteLogger(this.Logger, items.Count, null);
+        LogMessages.ReadComplete(this.Logger, items.Count, null);
         return results;
     }
 
@@ -63,11 +63,11 @@ public class MemorySource : BaseSource
     {
         ArgumentNullException.ThrowIfNull(item);
 
-        LogMessages.WritingTagLogger(this.Logger, item.SourceAddress, null);
+        LogMessages.WritingTag(this.Logger, item.SourceAddress, null);
 
         this.memoryValues[item.SourceAddress] = value;
 
-        LogMessages.WriteCompleteLogger(this.Logger, item.SourceAddress, null);
+        LogMessages.WriteComplete(this.Logger, item.SourceAddress, null);
 
         return new DataPoint(DateTime.UtcNow, value, Quality.Good);
     }

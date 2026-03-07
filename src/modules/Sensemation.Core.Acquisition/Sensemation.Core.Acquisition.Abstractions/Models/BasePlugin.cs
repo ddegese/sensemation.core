@@ -26,7 +26,7 @@ public abstract class BasePlugin : IPlugin, IDisposable
         this.Id = id;
         this.Parameters = parameters ?? [];
 
-        LogMessages.PluginCreatedLogger(this.Logger, this.GetType().Name, this.Id, null);
+        LogMessages.PluginCreated(this.Logger, this.GetType().Name, this.Id, null);
     }
 
     /// <inheritdoc />
@@ -47,16 +47,16 @@ public abstract class BasePlugin : IPlugin, IDisposable
     /// <inheritdoc />
     public void Initialize()
     {
-        LogMessages.PluginInitializingLogger(this.Logger, this.GetType().Name, this.Id, null);
+        LogMessages.PluginInitializing(this.Logger, this.GetType().Name, this.Id, null);
 
         try
         {
             this.InitializeCore();
-            LogMessages.PluginInitializedLogger(this.Logger, this.GetType().Name, this.Id, null);
+            LogMessages.PluginInitialized(this.Logger, this.GetType().Name, this.Id, null);
         }
         catch (Exception ex)
         {
-            LogMessages.PluginInitializationFailedLogger(this.Logger, this.GetType().Name, this.Id, ex);
+            LogMessages.PluginInitializationFailed(this.Logger, this.GetType().Name, this.Id, ex);
             throw;
         }
     }
@@ -81,7 +81,7 @@ public abstract class BasePlugin : IPlugin, IDisposable
     {
         if (disposing)
         {
-            LogMessages.PluginDisposedLogger(this.Logger, this.GetType().Name, this.Id, null);
+            LogMessages.PluginDisposed(this.Logger, this.GetType().Name, this.Id, null);
         }
     }
 }

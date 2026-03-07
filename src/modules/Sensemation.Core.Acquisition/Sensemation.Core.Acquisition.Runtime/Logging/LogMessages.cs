@@ -26,30 +26,30 @@ public static class LogMessages
     /// <summary>
     /// Logs when writing to an item source fails.
     /// </summary>
-    public static readonly Action<ILogger, string, Exception?> ItemSourceWriteFailedLogger =
+    public static readonly Action<ILogger, string, Exception?> ItemSourceWriteFailed =
         LoggerMessage.Define<string>(LogLevel.Error, new EventId(2102, "ItemSourceWriteFailed"), "Error writing value for item source {ItemId}.");
 
     /// <summary>
     /// Logs when writing to an item fails.
     /// </summary>
-    public static readonly Action<ILogger, string, Exception?> ErrorWritingLogger =
+    public static readonly Action<ILogger, string, Exception?> ErrorWriting =
         LoggerMessage.Define<string>(LogLevel.Error, new EventId(2103, "ErrorWriting"), "Error writing to item {Id}");
 
     /// <summary>
     /// Logs when a group becomes overloaded.
     /// </summary>
-    public static readonly Action<ILogger, string, Exception?> GroupBusyLogger =
+    public static readonly Action<ILogger, string, Exception?> GroupBusy =
         LoggerMessage.Define<string>(LogLevel.Warning, new EventId(2104, "GroupOverloaded"), "Group {GroupName} is overloaded");
 
     /// <summary>
     /// Logs the duration of group refresh cycles.
     /// </summary>
-    public static readonly Action<ILogger, string, double, Exception?> GroupSourceReadTimeLogger =
+    public static readonly Action<ILogger, string, double, Exception?> GroupSourceReadTime =
         LoggerMessage.Define<string, double>(LogLevel.Debug, new EventId(2105, "GroupRefreshTime"), "Group {GroupName} update cycle took {ElapsedMilliseconds}ms");
 
     /// <summary>
     /// Logs errors that occur during group refresh cycles.
     /// </summary>
-    public static readonly Action<ILogger, string, string, Exception?> GroupRefreshErrorLogger =
+    public static readonly Action<ILogger, string, string, Exception?> GroupRefreshError =
         LoggerMessage.Define<string, string>(LogLevel.Error, new EventId(2106, "GroupRefreshError"), "Error during group {GroupName} update cycle: {ErrorMessage}");
 }

@@ -152,7 +152,7 @@ internal class TriggerManager(ILogger<TriggerManager> logger, IServiceProvider s
 
         if (!this.triggerTypes.TryGetValue(triggerTypeKey, out var triggerType))
         {
-            LogMessages.TriggerNotFoundLogger(this.logger, triggerConfig.Type, triggerConfig.Id, null);
+            LogMessages.TriggerNotFound(this.logger, triggerConfig.Type, triggerConfig.Id, null);
             throw new ArgumentException($"Unsupported trigger type: {triggerConfig.Type}");
         }
 

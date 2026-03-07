@@ -116,7 +116,7 @@ public class Group : IGroup, IDisposable
 
         if (!await this.semaphore.WaitAsync(0).ConfigureAwait(false))
         {
-            LogMessages.GroupBusyLogger(this.logger, this.Id, null);
+            LogMessages.GroupBusy(this.logger, this.Id, null);
             return;
         }
 
@@ -134,7 +134,7 @@ public class Group : IGroup, IDisposable
                 if (!results.TryGetValue(item.Id, out var dataPoint))
                 {
                     dataPoint = new DataPoint(DateTime.UtcNow, null, Quality.Bad);
-                    LogMessages.GroupRefreshErrorLogger(this.logger, this.Id, $"Item '{item.Id}' not found in source results", null);
+                    LogMessages.GroupRefreshError(this.logger, this.Id, $"Item '{item.Id}' not found in source results", null);
                 }
 
                 await item.OnValueRead(dataPoint).ConfigureAwait(false);
@@ -144,7 +144,7 @@ public class Group : IGroup, IDisposable
             this.LastSuccessUtc = this.LastRefreshUtc;
             this.ConsecutiveFailures = 0;
 
-            LogMessages.GroupSourceReadTimeLogger(this.logger, this.Id, stopwatch.Elapsed.TotalMilliseconds, null);
+            LogMessages.GroupSourceReadTime(this.logger, this.Id, stopwatch.Elapsed.TotalMilliseconds, null);
         }
         catch (Exception ex)
         {
@@ -158,7 +158,7 @@ public class Group : IGroup, IDisposable
                 await item.OnValueRead(dataPoint).ConfigureAwait(false);
             }
 
-            LogMessages.GroupRefreshErrorLogger(this.logger, this.Id, ex.Message, ex);
+            LogMessages.GroupRefreshError(this.logger, this.Id, ex.Message, ex);
             throw;
         }
         finally

@@ -111,7 +111,7 @@ internal class ItemManager(
                 }
                 else
                 {
-                    LogMessages.GroupNotFoundForItemLogger(this.logger, itemConfig.Group, sourceItem.Id, null);
+                    LogMessages.GroupNotFoundForItem(this.logger, itemConfig.Group, sourceItem.Id, null);
                 }
             }
 
@@ -126,7 +126,7 @@ internal class ItemManager(
                 }
                 else
                 {
-                    LogMessages.AdapterNotFoundForItemLogger(this.logger, adapterName, sourceItem.Id, null);
+                    LogMessages.AdapterNotFoundForItem(this.logger, adapterName, sourceItem.Id, null);
                 }
             }
         }
@@ -152,7 +152,7 @@ internal class ItemManager(
         this.itemToGroupMap[item.Id] = group.Id;
 
         // Log assignment
-        LogMessages.ItemAssignedToGroupLogger(this.logger, item.Id, group.Id, null);
+        LogMessages.ItemAssignedToGroup(this.logger, item.Id, group.Id, null);
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ internal class ItemManager(
         ArgumentNullException.ThrowIfNull(listener);
 
         item.AddValueListener(listener);
-        LogMessages.ListenerAssignedLogger(this.logger, listener.GetType().Name, item.Id, null);
+        LogMessages.ListenerAssigned(this.logger, listener.GetType().Name, item.Id, null);
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ internal class ItemManager(
         if (adapter is BaseAdapter baseAdapter)
         {
             baseAdapter.AddValueAccessor(accessor);
-            LogMessages.AccessorAddedToAdapterLogger(this.logger, accessor.Id, adapter.Id, null);
+            LogMessages.AccessorAddedToAdapter(this.logger, accessor.Id, adapter.Id, null);
         }
     }
 
@@ -216,7 +216,7 @@ internal class ItemManager(
             foreach (var item in this.itemsByIdentifier.Values)
             {
                 var address = (item as IItemSource)?.SourceAddress ?? string.Empty;
-                LogMessages.ItemDisposedLogger(this.logger, item.Id, address, null);
+                LogMessages.ItemDisposed(this.logger, item.Id, address, null);
 
                 if (item is IDisposable disposable)
                 {
@@ -263,7 +263,7 @@ internal class ItemManager(
             this.itemsByIdentifier[item.Id] = item;
 
             // Log item creation
-            LogMessages.ItemCreatedLogger(this.logger, item.Id, item.SourceAddress, null);
+            LogMessages.ItemCreated(this.logger, item.Id, item.SourceAddress, null);
 
             // Load cache from disk if available
             if (this.cacheService != null)

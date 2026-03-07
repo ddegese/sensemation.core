@@ -31,16 +31,16 @@ public abstract class BaseTrigger : BasePlugin, ITrigger
     /// <inheritdoc />
     public async Task StartAsync()
     {
-        LogMessages.PluginStartingLogger(this.Logger, this.GetType().Name, this.Id, null);
+        LogMessages.PluginStarting(this.Logger, this.GetType().Name, this.Id, null);
 
         try
         {
             await this.StartCoreAsync().ConfigureAwait(false);
-            LogMessages.PluginStartedLogger(this.Logger, this.GetType().Name, this.Id, null);
+            LogMessages.PluginStarted(this.Logger, this.GetType().Name, this.Id, null);
         }
         catch (Exception ex)
         {
-            LogMessages.PluginStartFailedLogger(this.Logger, this.GetType().Name, this.Id, ex);
+            LogMessages.PluginStartFailed(this.Logger, this.GetType().Name, this.Id, ex);
             throw;
         }
     }
@@ -48,16 +48,16 @@ public abstract class BaseTrigger : BasePlugin, ITrigger
     /// <inheritdoc />
     public async Task StopAsync()
     {
-        LogMessages.PluginStoppingLogger(this.Logger, this.GetType().Name, this.Id, null);
+        LogMessages.PluginStopping(this.Logger, this.GetType().Name, this.Id, null);
 
         try
         {
             await this.StopCoreAsync().ConfigureAwait(false);
-            LogMessages.PluginStoppedLogger(this.Logger, this.GetType().Name, this.Id, null);
+            LogMessages.PluginStopped(this.Logger, this.GetType().Name, this.Id, null);
         }
         catch (Exception ex)
         {
-            LogMessages.PluginStopFailedLogger(this.Logger, this.GetType().Name, this.Id, ex);
+            LogMessages.PluginStopFailed(this.Logger, this.GetType().Name, this.Id, ex);
             throw;
         }
     }

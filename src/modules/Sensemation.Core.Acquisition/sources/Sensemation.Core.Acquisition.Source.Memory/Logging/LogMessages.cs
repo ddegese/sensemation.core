@@ -14,24 +14,24 @@ public static class LogMessages
     /// <summary>
     /// Logs when memory tags are being read.
     /// </summary>
-    public static readonly Action<ILogger, int, Exception?> ReadingTagsLogger =
+    public static readonly Action<ILogger, int, Exception?> ReadingTags =
         LoggerMessage.Define<int>(LogLevel.Debug, new EventId(4001, "ReadingTags"), "Reading {Count} tags from Memory source");
 
     /// <summary>
     /// Logs when memory tag reads complete.
     /// </summary>
-    public static readonly Action<ILogger, int, Exception?> ReadCompleteLogger =
+    public static readonly Action<ILogger, int, Exception?> ReadComplete =
         LoggerMessage.Define<int>(LogLevel.Debug, new EventId(4002, "ReadComplete"), "Finished reading {Count} tags from Memory source");
 
     /// <summary>
     /// Logs when a memory tag is being written.
     /// </summary>
-    public static readonly Action<ILogger, string, Exception?> WritingTagLogger =
+    public static readonly Action<ILogger, string, Exception?> WritingTag =
         LoggerMessage.Define<string>(LogLevel.Debug, new EventId(4003, "WritingTag"), "Writing to tag '{Id}' in Memory");
 
     /// <summary>
     /// Logs when a memory tag write completes.
     /// </summary>
-    public static readonly Action<ILogger, string, Exception?> WriteCompleteLogger =
+    public static readonly Action<ILogger, string, Exception?> WriteComplete =
         LoggerMessage.Define<string>(LogLevel.Debug, new EventId(4004, "WriteComplete"), "Successfully wrote to tag '{Id}' in Memory");
 }

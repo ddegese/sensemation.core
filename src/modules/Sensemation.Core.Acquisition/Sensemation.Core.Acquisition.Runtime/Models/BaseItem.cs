@@ -125,7 +125,7 @@ public abstract class BaseItem : IItem, IValueAccessor
         }
         catch (Exception ex)
         {
-            LogMessages.ErrorWritingLogger(this.Logger, this.Id, ex);
+            LogMessages.ErrorWriting(this.Logger, this.Id, ex);
             throw;
         }
     }

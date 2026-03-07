@@ -41,7 +41,7 @@ public class TriggerTime : BaseTrigger, IIntervalTrigger
         }
         else
         {
-            LogMessages.TriggerMissingUpdateRateLogger(this.Logger, this.Id, null);
+            LogMessages.TriggerMissingUpdateRate(this.Logger, this.Id, null);
         }
     }
 
