@@ -15,7 +15,7 @@
     <IsPackable>true</IsPackable>
     <PackageId>Sensemation.Core.Acquisition.Runtime</PackageId>
     <Authors>InnovoMind, LLC)</Authors>
-    <Description>Sensemation acquisition runtime bundle.</Description>
+    <Description>Sensemation.Core acquisition runtime bundle.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeProjectReferencesInPackage>true</IncludeProjectReferencesInPackage>
   </PropertyGroup>

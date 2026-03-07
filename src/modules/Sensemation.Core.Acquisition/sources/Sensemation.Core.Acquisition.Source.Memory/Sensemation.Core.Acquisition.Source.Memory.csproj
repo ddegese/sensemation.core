@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" />
-    <ProjectReference Include="..\..\..\..\platform\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\..\platform\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" />
+    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Abstractions\Sensemation.Core.Acquisition.Abstractions.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\..\Sensemation.Core.Acquisition.Runtime\Sensemation.Core.Acquisition.Runtime.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\..\..\..\platform\Sensemation.Core.Contracts\Sensemation.Core.Contracts.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\..\..\..\platform\Sensemation.Core.Foundation\Sensemation.Core.Foundation.csproj" PrivateAssets="all" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -13,6 +13,8 @@
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
     <PackageId>Sensemation.Core.Acquisition.Source.Memory</PackageId>
+    <Authors>InnovoMind, LLC)</Authors>
+    <Description>Sensemation.Core acquisition memory source.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeProjectReferencesInPackage>true</IncludeProjectReferencesInPackage>
   </PropertyGroup>
