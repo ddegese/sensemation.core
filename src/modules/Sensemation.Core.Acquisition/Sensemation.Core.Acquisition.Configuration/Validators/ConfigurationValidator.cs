@@ -11,21 +11,15 @@ namespace Sensemation.Core.Acquisition.Configuration.Validators;
 /// </summary>
 public static class ConfigurationValidator
 {
+    private static readonly ConfigurationValidationPipeline<ServiceConfiguration> Pipeline =
+        new(ServiceConfigurationValidationDefaults.CreateValidators());
+
     /// <summary>
     /// Validates the provided service configuration.
     /// </summary>
     /// <param name="configuration">The service configuration.</param>
     public static void ValidateConfiguration(ServiceConfiguration configuration)
     {
-        ArgumentNullException.ThrowIfNull(configuration);
-
-        AdapterConfigurationValidator.ValidateAdapterConfigurations(configuration.Adapters);
-        SourceConfigurationValidator.ValidateSourceConfigurations(configuration.Sources);
-        TriggerConfigurationValidator.ValidateTriggerConfigurations(configuration.Triggers);
-        GroupConfigurationValidator.ValidateGroupConfigurations(configuration.Groups, configuration.Sources, configuration.Triggers);
-        ItemConfigurationValidator.ValidateItemConfigurations(configuration.Items, configuration.Groups, configuration.Adapters);
-        LoggingConfigurationValidator.ValidateLoggingConfiguration(configuration.Logging);
-        CacheConfigurationValidator.ValidateCacheConfiguration(configuration.Cache);
-        PluginLoadConfigurationValidator.ValidatePluginLoadConfiguration(configuration.Plugins);
+        Pipeline.Validate(configuration);
     }
 }
