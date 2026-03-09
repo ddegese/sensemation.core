@@ -12,7 +12,7 @@ namespace Sensemation.Core.Acquisition.Configuration.Validators;
 public static class ConfigurationValidator
 {
     private static readonly ConfigurationValidationPipeline<ServiceConfiguration> Pipeline =
-        new(ServiceConfigurationValidationDefaults.CreateValidators());
+        new(CreateValidators());
 
     /// <summary>
     /// Validates the provided service configuration.
@@ -21,5 +21,24 @@ public static class ConfigurationValidator
     public static void ValidateConfiguration(ServiceConfiguration configuration)
     {
         Pipeline.Validate(configuration);
+    }
+
+    /// <summary>
+    /// Creates the default ordered validators for service configuration.
+    /// </summary>
+    /// <returns>An ordered validator sequence.</returns>
+    public static IReadOnlyList<IConfigurationValidator<ServiceConfiguration>> CreateValidators()
+    {
+        return
+        [
+            new AdaptersSectionValidator(),
+            new SourcesSectionValidator(),
+            new TriggersSectionValidator(),
+            new GroupsSectionValidator(),
+            new ItemsSectionValidator(),
+            new LoggingSectionValidator(),
+            new CacheSectionValidator(),
+            new PluginsSectionValidator(),
+        ];
     }
 }
