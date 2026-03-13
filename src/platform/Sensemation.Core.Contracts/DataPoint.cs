@@ -2,6 +2,8 @@
 //     Copyright (c) 2026 InnovoMind, LLC. All rights reserved.
 // </copyright>
 
+using System.Collections;
+
 namespace Sensemation.Core.Contracts;
 
 /// <summary>
@@ -68,12 +70,28 @@ public sealed class DataPoint
         return obj is not null &&
             obj is DataPoint other &&
             this.Quality == other.Quality &&
-            Equals(this.Value, other.Value);
+            ValuesEqual(this.Value, other.Value);
     }
 
     /// <inheritdoc />
     public override int GetHashCode()
     {
-        return HashCode.Combine(this.Quality, this.Value);
+        return HashCode.Combine(this.Quality, GetValueHashCode(this.Value));
+    }
+
+    private static bool ValuesEqual(object? left, object? right)
+    {
+        return left is Array leftArray && right is Array rightArray
+            ? StructuralComparisons.StructuralEqualityComparer.Equals(leftArray, rightArray)
+            : Equals(left, right);
+    }
+
+    private static int GetValueHashCode(object? value)
+    {
+        return value is null
+            ? 0
+            : value is Array array
+            ? StructuralComparisons.StructuralEqualityComparer.GetHashCode(array)
+            : value.GetHashCode();
     }
 }
