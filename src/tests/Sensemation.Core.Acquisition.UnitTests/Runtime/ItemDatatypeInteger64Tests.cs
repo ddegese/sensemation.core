@@ -138,6 +138,78 @@ public sealed class ItemDatatypeInteger64Tests : IDisposable
     }
 
     [Fact]
+    public void DataPointEqualityOperatorWithInteger64ReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 123456789L, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 123456789L, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithInteger64ReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 123456789L, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 123456790L, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithUnsignedInteger64ReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 123456789UL, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 123456789UL, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithUnsignedInteger64ReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 123456789UL, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 123456790UL, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithInteger64ArrayReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new long[] { -1, 0, 1 }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new long[] { -1, 0, 1 }, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithInteger64ArrayReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new long[] { -1, 0, 1 }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new long[] { -1, 0, 2 }, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithUnsignedInteger64ArrayReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new ulong[] { 0ul, 1ul, 2ul }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new ulong[] { 0ul, 1ul, 2ul }, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithUnsignedInteger64ArrayReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new ulong[] { 0ul, 1ul, 2ul }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new ulong[] { 0ul, 1ul }, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
     public void ConvertLongOverflowThrows()
     {
         var converter = new DefaultValueConverter();

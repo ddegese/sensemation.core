@@ -162,6 +162,42 @@ public sealed class ItemDatatypeBoolTests : IDisposable
     }
 
     [Fact]
+    public void DataPointEqualityOperatorWithBoolReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, true, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), true, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithBoolReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, true, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), false, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithBoolArrayReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new bool[] { true, false, true }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new bool[] { true, false, true }, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithBoolArrayReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new bool[] { true, false, true }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new bool[] { true, false }, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
     public void ConvertBoolFromInvalidStringThrows()
     {
         var converter = new DefaultValueConverter();

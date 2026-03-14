@@ -177,6 +177,78 @@ public sealed class ItemDatatypeFloatTests : IDisposable
     }
 
     [Fact]
+    public void DataPointEqualityOperatorWithSinglePrecisionReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 3.14f, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 3.14f, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithSinglePrecisionReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 3.14f, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 2.71f, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithDoublePrecisionReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 3.14159, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 3.14159, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithDoublePrecisionReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, 3.14159, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), 2.71828, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithSinglePrecisionArrayReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new float[] { -1.0f, 0.0f, 1.0f }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new float[] { -1.0f, 0.0f, 1.0f }, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithSinglePrecisionArrayReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new float[] { -1.0f, 0.0f, 1.0f }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new float[] { -1.0f, 0.0f }, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithDoublePrecisionArrayReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new double[] { -1.0, 0.0, 1.0 }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new double[] { -1.0, 0.0, 1.0 }, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithDoublePrecisionArrayReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new double[] { -1.0, 0.0, 1.0 }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new double[] { -1.0, 0.0, 2.0 }, Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
     public void ConvertFloatOverflowThrows()
     {
         var converter = new DefaultValueConverter();

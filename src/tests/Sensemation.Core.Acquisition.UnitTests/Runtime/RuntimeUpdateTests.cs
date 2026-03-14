@@ -17,8 +17,6 @@ namespace Sensemation.Core.Acquisition.UnitTests.Runtime;
 /// </summary>
 public class RuntimeUpdateTests
 {
-    private static readonly int[] ArrayValue123 = [1, 2, 3];
-
     /// <summary>
     /// Ensures updates refresh cache and last updated timestamp.
     /// </summary>
@@ -71,32 +69,6 @@ public class RuntimeUpdateTests
         var history = item.GetHistoryValues();
         _ = Assert.Single(history);
         Assert.Equal(10, item.LatestDataPoint.Value);
-    }
-
-    /// <summary>
-    /// Ensures duplicate datapoints are ignored when values are arrays with equal contents.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous test.</returns>
-    [Fact]
-    public async Task UpdateEventDispatcherShouldIgnoreDuplicateDataPointWhenValueIsArray()
-    {
-        using var dispatcher = new UpdateEventDispatcher(new NullLogger<UpdateEventDispatcher>());
-        var item = new ItemSource(new NullLogger<ItemSource>(), dispatcher, new DefaultValueConverter())
-        {
-            Id = "tag1",
-            Datatype = ItemType.Integer32,
-            CacheSize = 5,
-            SourceAddress = "tag1",
-        };
-
-        _ = dispatcher.Enqueue(new ItemUpdateEvent(item.Id, item, new DataPoint(DateTime.UtcNow, ArrayValue123.ToArray(), Quality.Good)));
-        _ = dispatcher.Enqueue(new ItemUpdateEvent(item.Id, item, new DataPoint(DateTime.UtcNow.AddSeconds(1), ArrayValue123.ToArray(), Quality.Good)));
-
-        await Task.Delay(50);
-
-        var history = item.GetHistoryValues();
-        _ = Assert.Single(history);
-        Assert.Equal(ArrayValue123, Assert.IsType<int[]>(item.LatestDataPoint.Value));
     }
 
     /// <summary>

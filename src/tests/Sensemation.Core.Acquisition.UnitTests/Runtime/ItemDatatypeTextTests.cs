@@ -82,6 +82,42 @@ public sealed class ItemDatatypeTextTests : IDisposable
         var dataPoint = await WriteValueAsync(item, "[\"Hello\", \"World\", \"\", \"Test\"]").ConfigureAwait(true);
         Assert.Equal(StringArraySample, dataPoint.Value);
     }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithTextReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, "Hello World", Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), "Hello World", Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithTextReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, "Hello", Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), "World", Quality.Good);
+
+        Assert.False(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithTextArrayReturnsTrueForEqualValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new string[] { "A", "B", "C" }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new string[] { "A", "B", "C" }, Quality.Good);
+
+        Assert.True(left == right);
+    }
+
+    [Fact]
+    public void DataPointEqualityOperatorWithTextArrayReturnsFalseForDifferentValues()
+    {
+        var left = new DataPoint(DateTime.UtcNow, new string[] { "A", "B", "C" }, Quality.Good);
+        var right = new DataPoint(DateTime.UtcNow.AddSeconds(1), new string[] { "A", "B" }, Quality.Good);
+
+        Assert.False(left == right);
+    }
 }
 
 #pragma warning restore SA1101, SA1202, SA1600, SA1139, CA1707, CA1861, CS1591, IDE0009
