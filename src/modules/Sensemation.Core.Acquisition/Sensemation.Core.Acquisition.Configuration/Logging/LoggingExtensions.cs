@@ -35,6 +35,14 @@ public static class LoggingExtensions
             var minLevel = ParseLogLevel(config.MinimumLevel);
             _ = builder.SetMinimumLevel(minLevel);
 
+            // Clear existing host-level filter rules (e.g. Logging:LogLevel from appsettings)
+            // so this custom acquisition logging configuration is authoritative.
+            _ = builder.Services.Configure<LoggerFilterOptions>(options =>
+            {
+                options.MinLevel = minLevel;
+                options.Rules.Clear();
+            });
+
             // Add our custom console logger provider
             _ = builder.AddProvider(new CustomConsoleLoggerProvider(minLevel, config.Enabled, config.IncludeStackTraces));
         });
