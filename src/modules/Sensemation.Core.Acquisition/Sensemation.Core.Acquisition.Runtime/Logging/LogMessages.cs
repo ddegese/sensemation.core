@@ -36,10 +36,10 @@ public static class LogMessages
         LoggerMessage.Define<string>(LogLevel.Error, new EventId(2103, "ErrorWriting"), "Error writing to item {Id}");
 
     /// <summary>
-    /// Logs when a group becomes overloaded.
+    /// Logs when a group becomes busy.
     /// </summary>
     public static readonly Action<ILogger, string, Exception?> GroupBusy =
-        LoggerMessage.Define<string>(LogLevel.Warning, new EventId(2104, "GroupOverloaded"), "Group {GroupName} is overloaded");
+        LoggerMessage.Define<string>(LogLevel.Warning, new EventId(2104, "GroupBusy"), "Group {GroupName} is busy and cannot process updates at this time.");
 
     /// <summary>
     /// Logs the duration of group refresh cycles.
